@@ -1,4 +1,4 @@
-import Overlap from './Overlap.js';
+const Overlap = require('./Overlap');
 
 /** Represents a search result and its number of matches */
 class Result {
