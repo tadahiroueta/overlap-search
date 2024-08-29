@@ -1,4 +1,4 @@
-const Overlap = require('./Overlap');
+import Overlap from './Overlap.js';
 
 /** Represents a search result and its number of matches */
 class Result {
@@ -22,5 +22,5 @@ class Result {
 export default function search(searchKey, options) {
     const results = options.map((option, index) => new Result(index, new Overlap(searchKey, option).matches));
     results.sort((a, b) => b.matches - a.matches);
-    return results;
+    return results.map(result => result.index);
 }
