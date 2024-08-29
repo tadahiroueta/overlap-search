@@ -1,5 +1,5 @@
 # Overlap Search
-***Short description of the repository***
+***Search algorithm for short texts***
 
 [Built With](#built-with) · [Features](#features) · [Installation](#installation) · [Usage](#usage)
 
