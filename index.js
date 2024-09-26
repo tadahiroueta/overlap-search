@@ -17,10 +17,13 @@ class Result {
  * 
  * @param {string} searchKey the keywords and phrases to search for in the options
  * @param {string[]} options the strings to search through
+ * @param {number} threshold the minimum percentage of character matches on the results
  * @returns {number[]} the indexes of the options that contain the searchKey
  */
-export default function search(searchKey, options) {
-    const results = options.map((option, index) => new Result(index, new Overlap(searchKey, option).matches));
-    results.sort((a, b) => b.matches - a.matches);
+export default function search(searchKey, options, threshold = 0) {
+    const results = options
+        .map((option, index) => new Result(index, new Overlap(searchKey, option).matches))
+        .filter((result) => result.matches / searchKey.length >= threshold)
+        .sort((a, b) => b.matches - a.matches);
     return results.map(result => result.index);
 }
