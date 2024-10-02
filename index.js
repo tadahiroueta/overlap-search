@@ -21,6 +21,9 @@ class Result {
  * @returns {number[]} the indexes of the options that contain the searchKey
  */
 export default function search(searchKey, options, threshold = 0) {
+    // missing searching key
+    if (!searchKey) return options;
+
     const results = options
         .map((option, index) => new Result(index, new Overlap(searchKey, option).matches))
         .filter((result) => result.matches / searchKey.length >= threshold)
