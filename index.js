@@ -22,7 +22,7 @@ class Result {
  */
 export default function search(searchKey, options, threshold = 0) {
     // missing searching key
-    if (!searchKey) return options;
+    if (!searchKey) return options.map((_, index) => index);
 
     const results = options
         .map((option, index) => new Result(index, new Overlap(searchKey, option).matches))
